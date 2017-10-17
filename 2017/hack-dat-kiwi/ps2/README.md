@@ -1,0 +1,53 @@
+# Hack Dat Kiwi 2017
+## PS2
+
+## Information
+**Category:** | **Points:** | **Author:**
+--- | --- | ---
+Crypto | 100 | Ben Burnett
+
+## Description
+We are presented with a php script responsible for encryption and decryption along with three parameters for configuring it:
+```
+BLOCK_SIZE = 16;
+SEED = 7;
+ROUNDS = 2;
+```
+
+We are presented with a large block of ciphertext, and asked to decrypt it.
+
+This is the same encryption script that PS1 uses, but the parameters are different. Most interestingly the encryption goes through two rounds.
+
+## Solution
+I don't want to repeat too much from the PS1 write-up, so I'll assume that you have read that one first.
+Again, the major difference here is that the encryption goes through two passes.
+This means that each piece of cipher text is encrypted by two, probably different, pieces of the key.
+
+The plan of attack here is to use the solution for PS1, but after doing the reverse substitution we then again find all 
+possible values for the second xor such that the second reverse substitution results in a prinable ascii character.
+
+The `ps2.py` will solve each column one by one and create an output which is the solved md5 hash of the key. Again,
+we can plug this in to the php script to retrieve the flag.
+
+The output of the script is:
+```
+Solving column 0 ...
+Solving column 1 ...
+Solving column 2 ...
+Solving column 3 ...
+Solving column 4 ...
+Solving column 5 ...
+Solving column 6 ...
+Solving column 7 ...
+Solving column 8 ...
+Solving column 9 ...
+Solving column 10 ...
+Solving column 11 ...
+Solving column 12 ...
+Solving column 13 ...
+Solving column 14 ...
+Solving column 15 ...
+754953ebc7bc2a7b0087d45447c08062
+```
+
+
